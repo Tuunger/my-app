@@ -2,33 +2,27 @@ import {defineField, defineType} from 'sanity'
 
 export const projectType = defineType({
   name: 'project',
-  title: 'Projekt',
+  title: 'Kategorie',
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Titel',
-      type: 'string',
-    }),
-    defineField({
       name: 'category',
-      title: 'Kategorie',
+      title: 'Kategorie Name',
       type: 'string',
-      options: {
-        list: [
-          {title: 'Design', value: 'design'},
-          {title: 'Code', value: 'code'},
-          {title: 'Foto', value: 'photo'},
-        ],
-      },
     }),
     defineField({
-      name: 'mainImage',
-      title: 'Hauptbild',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'images',
+      title: 'Bilder',
+      type: 'array',
+      of: [{ 
+        type: 'image', 
+        options: { hotspot: true } 
+      }],
+    }),
+    defineField({
+      name: 'order',
+      title: 'Reihenfolge',
+      type: 'number',
     }),
   ],
 })
