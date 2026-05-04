@@ -1,0 +1,95 @@
+/* Header Container */
+.header {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  padding: 30px 20px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+}
+
+/* Der Toggle-Button (Bootstrap Button Neutralisierung) */
+.dropdown-toggle-custom, 
+.dropdown-toggle-custom:focus, 
+.dropdown-toggle-custom:active, 
+.dropdown-toggle-custom:focus-visible,
+.show > .dropdown-toggle-custom.btn-primary {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important; /* Entfernt den blauen Fokus-Ring */
+  outline: none !important;
+  color: white !important;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Das Icon im Header-Toggle */
+.dropdown-toggle-custom i {
+  font-size: 3.5rem; /* Deine gewünschte Größe */
+  transition: color 0.3s ease;
+}
+
+/* Hover-Effekt & Zustand bei offenem Menü */
+.dropdown-toggle-custom:hover i,
+.dropdown-toggle-custom[aria-expanded="true"] i {
+  color: #FFC15E !important;
+}
+
+/* Entfernt den Bootstrap-Standardpfeil */
+.dropdown-toggle-custom::after {
+  display: none !important;
+}
+
+/* Das Dropdown-Menü (Container) */
+.dropdown-menu-custom {
+  background-color: #32373B !important;
+  border: 1px solid #4A5859 !important;
+  border-radius: 8px;
+  min-width: 360px;
+  margin-top: 10px !important;
+  padding: 0; /* Verhindert ungewollte Abstände oben/unten */
+  overflow: hidden;
+}
+
+/* Die einzelnen Menü-Punkte */
+.dropdown-item-custom {
+  color: white !important;
+  padding: 24px 40px;
+  font-size: 2rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Optional: Trennlinie */
+}
+
+.dropdown-item-custom:last-child {
+  border-bottom: none;
+}
+
+/* Icons innerhalb der Menü-Punkte */
+.dropdown-item-custom i {
+  font-size: 2rem;
+  width: 1.5em; /* Sorgt für gleichmäßige Ausrichtung */
+  text-align: center;
+}
+
+/* Hover-Zustand der Menü-Punkte */
+.dropdown-item-custom:hover {
+  background-color: #4A5859 !important;
+  color: #64B6AC !important;
+}
+
+/* Animation & Transition für das List-Icon */
+.icon-transition {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease-in-out;
+  line-height: 1;
+}

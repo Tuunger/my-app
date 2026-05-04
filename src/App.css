@@ -1,0 +1,182 @@
+/* --- Basis Setup --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+  overflow-x: hidden; /* Verhindert horizontales Scrollen durch Zoom-Effekte */
+}
+
+.main-content {
+  flex: 1;
+  padding: 0;
+}
+
+/* --- Hero Static Image --- */
+.hero-static {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 70px);
+  overflow: hidden;
+}
+
+/* Das Bild, das man durch die Schrift sehen soll */
+.hero-image-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/lamps_disco/IMG_2981.jpg'); /* Dein Bild-Pfad */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* --- Der schwarze Balken --- */
+.heading-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background-color: #000; /* Der Balken ist schwarz */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  min-height: 80px;
+  
+  /* WICHTIG: Das sorgt dafür, dass Weiß transparent wird und Schwarz bleibt */
+  mix-blend-mode: multiply; 
+}
+
+.heading-bar h1 {
+  margin: 0;
+  font-size: 11rem;
+  font-weight: 1000;
+  padding-bottom: 0;
+
+  
+  /* WICHTIG: Die Schrift MUSS reinweiß sein, um durchsichtig zu werden */
+  color: #fff; 
+  
+  letter-spacing: 1px;
+  ;
+  font-family: sans-serif; /* Oder deine Cargo-Schrift */
+}
+
+/* --- About Me Section --- */
+.about-me {
+  padding: 80px 20px; /* Mehr Luft nach oben/unten */
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.about-image img {
+  width: 300px;
+  height: 400px;
+  border-radius: 15px; /* Etwas weicher als 5% */
+  object-fit: cover;
+  border: 3px solid #64B6AC;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Mehr Tiefe */
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #FFC15E;
+}
+
+.about-text p {
+  line-height: 1.8; /* Mehr Zeilenabstand für bessere Lesbarkeit */
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #000; /* Leichtes Off-White für Dark Mode */
+}
+
+/* --- Work Section --- */
+.work-section {
+  padding: 80px 20px;
+  background-color: #4A5859;
+  width: 100%;
+}
+
+.work-title {
+  color: white;
+  margin-bottom: 40px;
+  font-size: 2.2rem;
+}
+
+.work-icons {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 50px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.6); /* Standardmäßig etwas blasser */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.icon-btn i {
+  font-size: 3.5rem;
+  margin-bottom: 10px;
+}
+
+.icon-btn:hover {
+  color: white;
+  transform: translateY(-5px);
+}
+
+.icon-btn.active {
+  color: #FFC15E;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* --- Gallery Grid --- */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  background-color: #32373B;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  border: 1px solid rgba(100, 182, 172, 0.3);
+  color: #64B6AC;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.02);
+  border-color: #64B6AC;
+}
