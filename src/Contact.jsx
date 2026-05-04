@@ -22,7 +22,7 @@ const Contact = () => {
         </p>
         <div className="contact-card">
           <p>E-Mail: kontakt@luminar-layers.de</p>
-          <p>Ort: Deine Werkstatt / Stadt</p>
+          <p>Ort: Freiburg</p>
           <a
             href={whatsappUrl}
             target="_blank"
