@@ -53,17 +53,12 @@
 
 .heading-bar h1 {
   margin: 0;
-  font-size: 11rem;
+  font-size: clamp(3rem, 10vw, 11rem);
   font-weight: 1000;
   padding-bottom: 0;
-
-  
-  /* WICHTIG: Die Schrift MUSS reinweiß sein, um durchsichtig zu werden */
-  color: #fff; 
-  
+  color: #fff;
   letter-spacing: 1px;
-  ;
-  font-family: sans-serif; /* Oder deine Cargo-Schrift */
+  font-family: sans-serif;
 }
 
 /* --- About Me Section --- */
