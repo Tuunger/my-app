@@ -1,5 +1,6 @@
 import React from 'react';
 import './Contact.css';
+import { Hero } from './App';
 
 const Contact = () => {
   const whatsappNumber = '4915901014225';
@@ -8,12 +9,7 @@ const Contact = () => {
 
   return (
     <div className="contact-page-wrapper">
-      <section className="hero-static" style={{ height: '300px' }}>
-        <div className="hero-image-bg"></div>
-        <div className="heading-bar">
-          <h1>KONTAKT</h1>
-        </div>
-      </section>
+      <Hero title="KONTAKT" height="300px" />
 
       <section className="contact-section">
         <h2>Schreib mir eine Nachricht</h2>

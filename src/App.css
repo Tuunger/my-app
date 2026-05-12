@@ -5,7 +5,9 @@
   min-height: 100vh;
   width: 100%;
   text-align: center;
-  overflow-x: hidden; /* Verhindert horizontales Scrollen durch Zoom-Effekte */
+  overflow-x: hidden;
+  background-color: #000; /* Hintergrund auf tiefschwarz */
+  color: white;
 }
 
 .main-content {
@@ -13,57 +15,74 @@
   padding: 0;
 }
 
-/* --- Hero Static Image --- */
+/* --- Hero Static Image / Diashow --- */
 .hero-static {
   position: relative;
   width: 100%;
   height: calc(100vh - 70px);
   overflow: hidden;
+  background-color: #000;
 }
 
-/* Das Bild, das man durch die Schrift sehen soll */
-.hero-image-bg {
+/* Die Slides für die Diashow */
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  
+  transition: opacity 2s ease-in-out; 
+  will-change: opacity, transform;
+  animation: subtleZoom 20s infinite alternate ease-in-out;
+
+  /* --- FARB- UND KONTRAST-FIX --- */
+  /* Wir nutzen 'lighten' statt 'screen', das ist oft weniger extrem.
+     Alternativ kannst du 'soft-light' für einen sehr subtilen Look probieren. */
+  mix-blend-mode: lighten; 
+
+  /* Filter machen die Bilder knackiger: 
+     brightness(0.7) macht sie dunkler, 
+     contrast(1.2) verstärkt die Unterschiede, 
+     saturate(1.4) macht die Farben kräftiger. */
+  filter: brightness(0.7) contrast(1.2) saturate(1.4);
+}
+
+/* Dezenter Zoom-Effekt */
+@keyframes subtleZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* --- Der schwarze Balken (Original-Position) --- */
+.heading-bar {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-image: url('./assets/lamps_disco/IMG_2981.JPG'); /* Dein Bild-Pfad */
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-}
-
-/* --- Der schwarze Balken --- */
-.heading-bar {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 180px;
-  background-color: #000; /* Der Balken ist schwarz */
+  min-height: 180px;
+  padding: 20px 0;
+  background-color: #000; 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
-  min-height: 80px;
-  
-  /* WICHTIG: Das sorgt dafür, dass Weiß transparent wird und Schwarz bleibt */
+  z-index: 9999; 
   mix-blend-mode: multiply; 
+  pointer-events: none;
 }
 
 .heading-bar h1 {
   margin: 0;
   font-size: clamp(3rem, 10vw, 11rem);
   font-weight: 1000;
-  padding-bottom: 0;
   color: #fff;
   letter-spacing: 1px;
   font-family: sans-serif;
+  text-transform: uppercase;
 }
 
 /* --- About Me Section --- */
 .about-me {
-  padding: 80px 20px; /* Mehr Luft nach oben/unten */
+  padding: 80px 20px;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -71,17 +90,19 @@
 .about-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
 }
 
 .about-image img {
-  width: 300px;
-  height: 400px;
-  border-radius: 15px; /* Etwas weicher als 5% */
+  max-width: 100%;
+  width: 320px;
+  height: auto;
+  border-radius: 15px;
   object-fit: cover;
   border: 3px solid #64B6AC;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Mehr Tiefe */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .about-text {
@@ -97,10 +118,10 @@
 }
 
 .about-text p {
-  line-height: 1.8; /* Mehr Zeilenabstand für bessere Lesbarkeit */
+  line-height: 1.8;
   margin-bottom: 15px;
   font-size: 1.1rem;
-  color: #000; /* Leichtes Off-White für Dark Mode */
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* --- Work Section --- */
@@ -119,14 +140,15 @@
 .work-icons {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: clamp(20px, 5vw, 50px);
+  flex-wrap: wrap;
   margin-bottom: 50px;
 }
 
 .icon-btn {
   background: none;
   border: none;
-  color: rgba(255,255,255,0.6); /* Standardmäßig etwas blasser */
+  color: rgba(255,255,255,0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,7 +175,7 @@
 /* --- Gallery Grid --- */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
@@ -169,9 +191,29 @@
   border: 1px solid rgba(100, 182, 172, 0.3);
   color: #64B6AC;
   transition: transform 0.3s ease;
+  overflow: hidden;
 }
 
 .gallery-item:hover {
   transform: scale(1.02);
   border-color: #64B6AC;
+}
+
+/* --- Responsive Anpassungen --- */
+@media (max-width: 768px) {
+  .about-text {
+    text-align: center;
+  }
+  
+  .about-me {
+    padding: 40px 20px;
+  }
+
+  .hero-static {
+    height: 60vh;
+  }
+
+  .heading-bar {
+    min-height: 120px;
+  }
 }

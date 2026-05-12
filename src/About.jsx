@@ -1,17 +1,13 @@
 import React from 'react';
 import portrait from './assets/general/portrait.jpg';
+import { Hero } from './App';
 import './App.css';
 
 const About = () => {
   return (
     <div className="about-page-wrapper">
       {/* Hero Section für den schwarzen Balken mit Knockout-Effekt */}
-      <section className="hero-static" style={{ height: '300px' }}>
-        <div className="hero-image-bg"></div>
-        <div className="heading-bar">
-          <h1>ÜBER MICH</h1>
-        </div>
-      </section>
+      <Hero title="ÜBER MICH" height="300px" />
 
       <section className="about-me">
         <div className="about-container">
